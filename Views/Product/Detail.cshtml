@@ -1,0 +1,298 @@
+﻿
+<head>
+    <style>
+        #mainCarousel .carousel-control-prev,
+        #mainCarousel .carousel-control-next {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* Hiển thị mũi tên khi hover vào carousel */
+        #mainCarousel:hover .carousel-control-prev,
+        #mainCarousel:hover .carousel-control-next {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Carousel chính */
+        #mainCarousel .carousel-item img {
+            width: 100%;
+            height: 470px; /* Điều chỉnh chiều cao nếu cần */
+            object-fit: cover;
+        }
+
+        /* Carousel phụ */
+        #galleryCarousel .carousel-item img {
+            width: 100%;
+            height: 150px; /* Điều chỉnh chiều cao nếu cần */
+            object-fit: cover;
+            cursor: pointer; /* Hiển thị con trỏ tay để báo hiệu có thể nhấp */
+            transition: border 0.3s ease;
+        }
+
+        /* Làm nổi bật bộ ảnh đang được chọn */
+        #galleryCarousel .carousel-item.active img {
+            border: 2px solid #00c4cc; /* Viền màu xanh lam cho bộ ảnh đang hoạt động */
+        }
+
+        /* Hiệu ứng khi di chuột vào hình ảnh trong carousel phụ */
+        #galleryCarousel .carousel-item img:hover {
+            border: 2px solid #00a3a8;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+       
+        .project-details {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+            .project-details h4 {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+            }
+
+            .project-details ul {
+                list-style: none;
+                padding: 0;
+                margin-bottom: 1rem;
+            }
+
+                .project-details ul li {
+                    margin-bottom: 0.5rem;
+                }
+
+                    .project-details ul li strong {
+                        color: #333;
+                    }
+
+        .btn-outline-primary {
+            border-color: #00c4cc;
+            color: #00c4cc;
+        }
+
+            .btn-outline-primary:hover {
+                background-color: #00c4cc;
+                color: #fff;
+            }
+
+        .promo-form {
+            background-color: #e6f7fa;
+            border: 1px solid #b0e0e6;
+        }
+
+            .promo-form h5 {
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
+
+            .promo-form p {
+                font-size: 0.9rem;
+                color: #555;
+            }
+
+        .btn-primary {
+            background-color: #00c4cc;
+            border-color: #00c4cc;
+        }
+
+            .btn-primary:hover {
+                background-color: #00a3a8;
+                border-color: #00a3a8;
+            }
+
+        .gallery-image {
+            height: 160px; /* Đặt chiều cao cố định */
+            object-fit: cover; /* Cắt ảnh để vừa với kích thước */
+            cursor: pointer; /* Biến con trỏ thành dấu nhấp chuột */
+        }
+
+        .thumbnail-carousel {
+            display: flex;
+            justify-content: space-between; /* Căn đều ảnh nhỏ */
+            width: 100%;
+            height: 150px;
+        }
+
+            .thumbnail-carousel img {
+                width: calc(100% / 5 - 10px); /* Đảm bảo mỗi ảnh nhỏ chiếm 1/5 chiều rộng */
+                height: auto; /* Giữ tỷ lệ ảnh */
+                object-fit: cover;
+            }
+        /* Tùy chỉnh thanh danh mục */
+        .card {
+            border: 1px solid #ddd;
+        }
+
+        .card-header {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .list-group-item {
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hiệu ứng highlight */
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Định dạng hình ảnh */
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <!-- Carousel chính và Carousel phụ -->
+            <div class="col-md-8">
+                <!-- Carousel chính (Hình lớn) -->
+                <div id="mainCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/img/portfolio-1.jpg" alt="Hình lớn 1" class="d-block w-100 rounded">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/portfolio-2.jpg" alt="Hình lớn 2" class="d-block w-100 rounded">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/portfolio-3.jpg" alt="Hình lớn 3" class="d-block w-100 rounded">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/portfolio-4.jpg" alt="Hình lớn 4" class="d-block w-100 rounded">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/portfolio-5.jpg" alt="Hình lớn 5" class="d-block w-100 rounded">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden"></span>
+                    </button>
+                </div>
+
+                <!-- Hình nhỏ liên kết với carousel lớn (CÓ CÙNG CHIỀU NGANG) -->
+                <div class="thumbnail-carousel">
+                   
+                        <img src="~/img/portfolio-1.jpg" alt="Hình nhỏ 1"  data-bs-target="#mainCarousel" data-bs-slide-to="0">
+                  
+                   
+                        <img src="~/img/portfolio-2.jpg" alt="Hình nhỏ 2"  data-bs-target="#mainCarousel" data-bs-slide-to="1">
+                  
+                  
+                        <img src="~/img/portfolio-3.jpg" alt="Hình nhỏ 3"  data-bs-target="#mainCarousel" data-bs-slide-to="2">
+                    
+                        <img src="~/img/portfolio-4.jpg" alt="Hình nhỏ 4"  data-bs-target="#mainCarousel" data-bs-slide-to="3">
+                   
+                        <img src="~/img/portfolio-5.jpg" alt="Hình nhỏ 5" data-bs-target="#mainCarousel" data-bs-slide-to="4">
+                   
+
+                </div>
+            </div>
+
+
+
+
+            <!-- Chi tiết dự án và Form -->
+            <div class="col-md-4">
+                <!-- Chi tiết dự án -->
+                <div class="project-details p-3 rounded shadow-sm mb-3">
+                    <h4>Artex Building – 150m2 – Anh An</h4>
+                    <ul>
+                        <li><strong>Địa chỉ:</strong> Bà Đình, Hà Nội</li>
+                        <li><strong>Diện tích:</strong> 150m2</li>
+                        <li><strong>Phong cách:</strong> Hiện đại</li>
+                        <li><strong>Phòng ngủ:</strong> 3 phòng ngủ</li>
+                        <li><strong>Khách hàng:</strong> Anh An</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary w-100">Xem dự án với chất lượng HD tại đây</a>
+                </div>
+
+                <!-- Form khuyến mãi -->
+                <div class="promo-form p-3 rounded shadow-sm text-center">
+                    <h5 class="text-danger">Khuyến mãi đặc biệt giảm 100% phí thiết kế – khi có công trình thực tế</h5>
+                    <p>Khách hàng nhận tư vấn trực tiếp từ các KTS & nhận ưu đãi đặc biệt với lòng đắc ý SPT – Mạnh sẽ liên hệ lại.</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Họ tên *">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Số điện thoại *">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <p>
+                Thi công nội thất phòng thờ trang nghiêm
+                Tọa lạc tại khu biệt thự Nine South nổi bật với sự sang trọng và đẳng cấp, vì vậy, anh Bình cũng rất chăm chút vào từng chi tiết để sở hữu một không gian sống mang đậm phong cách hiện đại nhưng vẫn toát lên vẻ sang trọng, thanh lịch. Để không làm phụ lòng anh Bình, Mạnh Hệ cùng đội ngũ của mình đã không ngừng cố gắng để hoàn thiện dự án thi công nội thất biệt thự này, đáp ứng được những yêu cầu và sở thích của anh.
+
+                Kiến trúc và vân sườn biệt thự
+                Biệt thự liền kề của gia đình anh Bình được bàn giao thô, sau quá trình dài đi từ thiết kế, thi công đến hoàn thiện thì hôm nay đã thành hình với kiến trúc giống nhau nhưng nội thất độc bản, duy nhất, được thiết kế riêng dành cho từng thành viên nhà anh chị. Với khoảnh sân trước được Mạnh Hệ bố trí một góc vườn tươi mát, cùng xem những khu vực bên trong nhà được Mạnh Hệ thi công nhé.
+            </p>
+        </div>
+    </div>
+    <!-- PHẦN THÔNG TIN CHI TIẾT -->
+    <!-- DANH MỤC NỘI DUNG -->
+   
+
+
+
+    <!-- JavaScript tùy chỉnh để đồng bộ Carousel -->
+    <script>
+        // Lấy các carousel
+        const mainCarousel = document.getElementById('mainCarousel');
+        const galleryCarousel = document.getElementById('galleryCarousel');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+
+        // Đồng bộ carousel phụ khi carousel chính di chuyển
+        mainCarousel.addEventListener('slide.bs.carousel', function (event) {
+            const slideIndex = event.to;
+            const galleryCarouselInstance = bootstrap.Carousel.getOrCreateInstance(galleryCarousel);
+            galleryCarouselInstance.to(slideIndex);
+        });
+
+        // Đồng bộ carousel chính khi carousel phụ di chuyển
+        galleryCarousel.addEventListener('slide.bs.carousel', function (event) {
+            const slideIndex = event.to;
+            const mainCarouselInstance = bootstrap.Carousel.getOrCreateInstance(mainCarousel);
+            mainCarouselInstance.to(slideIndex);
+        });
+
+        // Cập nhật carousel chính khi nhấp vào hình trong carousel phụ
+        galleryImages.forEach(image => {
+            image.addEventListener('click', function () {
+                const mainIndex = parseInt(this.getAttribute('data-main-index'));
+                const mainCarouselInstance = bootstrap.Carousel.getOrCreateInstance(mainCarousel);
+                const galleryCarouselInstance = bootstrap.Carousel.getOrCreateInstance(galleryCarousel);
+
+                // Di chuyển cả hai carousel đến vị trí tương ứng
+                mainCarouselInstance.to(mainIndex);
+                galleryCarouselInstance.to(mainIndex);
+            });
+        });
+    </script>
+</body>
